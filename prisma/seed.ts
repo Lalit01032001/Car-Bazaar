@@ -3,7 +3,10 @@ import { PrismaLibSql } from "@prisma/adapter-libsql";
 import { hash } from "bcryptjs";
 import "dotenv/config";
 
-const adapter = new PrismaLibSql({ url: process.env.DATABASE_URL! });
+const adapter = new PrismaLibSql({
+  url: process.env.DATABASE_URL!,
+  authToken: process.env.DATABASE_AUTH_TOKEN,
+});
 const prisma = new PrismaClient({ adapter });
 
 async function main() {
